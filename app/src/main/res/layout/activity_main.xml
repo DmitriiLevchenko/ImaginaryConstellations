@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/background_0001_1">
+
+    <Button
+        android:id="@+id/rules"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_width="331dp"
+        android:layout_height="109dp"
+        android:layout_centerInParent="true"
+        android:width="200dp"
+        android:height="60dp"
+        android:text="rules" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="330dp"
+        android:layout_height="101dp"
+        android:layout_alignBottom="@+id/rules"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-79dp"
+        android:layout_marginBottom="-105dp"
+        android:width="200dp"
+        android:height="60dp"
+        android:background="@drawable/button"
+        android:text="exit"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="333dp"
+        android:layout_height="102dp"
+        android:layout_alignTop="@+id/rules"
+        android:layout_marginTop="-101dp"
+        android:layout_marginBottom="159dp"
+        android:width="200dp"
+        android:height="60dp"
+        android:background="@drawable/button"
+        android:text="start"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="262dp"
+        android:layout_height="207dp"
+        app:srcCompat="@drawable/arrow" />
+</RelativeLayout>
