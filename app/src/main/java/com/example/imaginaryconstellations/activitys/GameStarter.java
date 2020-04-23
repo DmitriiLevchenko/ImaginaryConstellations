@@ -1,4 +1,4 @@
-package com.example.imaginaryconstellations;
+package com.example.imaginaryconstellations.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,10 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.example.imaginaryconstellations.GameViewEvading;
+import com.example.imaginaryconstellations.R;
 import com.example.imaginaryconstellations.model.StarShape;
 import com.example.imaginaryconstellations.util.ActFinisher;
 import com.example.imaginaryconstellations.util.Line;
@@ -24,6 +27,10 @@ public class GameStarter extends AppCompatActivity implements View.OnTouchListen
     public static ArrayList<Line> LArray = new ArrayList<>();
     public  boolean previousPointischeked = false;
     private StarShape StartstarShape = null,finishstarShape =null;
+    private TextView massege;
+    public static String Smassege = "";
+    private Boolean atfirst = true;
+    public static  Boolean  restart = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,35 +39,34 @@ public class GameStarter extends AppCompatActivity implements View.OnTouchListen
         InizializateComponents();
     }
 
-    private void InizializateComponents()
-    {
-        GameViewEvading.starShapes.clear();
-        GameViewEvading gameView = new GameViewEvading(this,this);
-        LinearLayout gameLayout = findViewById(R.id.gameLayout);
-        gameLayout.setOnTouchListener(this);
-        gameLayout.addView(gameView); // и добавляем в него gameView
-        GameStarter.LArray.clear();
-        GameViewEvading.usesstarShapes.clear();
-        GameViewEvading.starShapes.clear();
-    }
-
     public boolean onTouch(View v, MotionEvent event) {
         x = event.getX();
         y = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: // нажатие
-                Log.d(MainActivity.LOG,"ACTION_DOWN" + x + " " + y);
+                if(GameStarter.restart)
+                {
+                    this.recreate();
+                    GameStarter.restart = false;
+                }
+                if(atfirst)
+                {
+                    atfirst = false;
+                    massege.setText("");
+                }
+
+                //Log.d(MainActivity.LOG,"ACTION_DOWN" + x + " " + y);
                 if(checkStarsSituation(x,y))
                 {
                     if(previousPointischeked && startPointer !=null)
                     {
-                        if(StartstarShape.x != finishstarShape.x && StartstarShape.y != finishstarShape.y)
+                        if(StartstarShape.x != finishstarShape.x || StartstarShape.y != finishstarShape.y)
                         {
 
                             finishPointer = new Pointer(x,y);
                             //Log.d(MainActivity.LOG,"LArray Addddd");
                             LArray.add(new Line(startPointer, finishPointer));
-                            for(int i = 0;i<GameViewEvading.usesstarShapes.size();i++)
+                            for(int i = 0; i< GameViewEvading.usesstarShapes.size(); i++)
                             {
                                 if(GameViewEvading.usesstarShapes.get(i) == StartstarShape)
                                 {
@@ -108,7 +114,7 @@ public class GameStarter extends AppCompatActivity implements View.OnTouchListen
         for(int i = 0;i<GameViewEvading.starShapes.size();i++)
         {
             int GameStarX = (int) ( GameViewEvading.starShapes.get(i).x*GameViewEvading.unitW);
-            int GameStarY = (int) ( GameViewEvading.starShapes.get(i).y*GameViewEvading.unitW);
+            int GameStarY = (int) ( GameViewEvading.starShapes.get(i).y*GameViewEvading.unitH);
             int GameStarR = (int) ( GameViewEvading.starShapes.get(i).radius*GameViewEvading.unitW*2);
             int maxX = GameStarX + GameStarR;
             int minX = GameStarX - GameStarR;
@@ -124,62 +130,38 @@ public class GameStarter extends AppCompatActivity implements View.OnTouchListen
                 {
                     finishstarShape=GameViewEvading.starShapes.get(i);
                 }
-                this.y = GameStarY;
+                this.y = GameStarY+GameStarR/3;
                 this.x = GameStarX+GameStarR/2;
                 return true;
             }
         }
         return  false;
     }
+    private void InizializateComponents()
+    {
+        massege = findViewById(R.id.textmassege);
+        if(Smassege!="")
+        {
+            massege.setText(Smassege);
+        }
+        GameViewEvading.starShapes.clear();
+        GameViewEvading gameView = new GameViewEvading(this,this);
+        LinearLayout gameLayout = findViewById(R.id.gameLayout);
+        gameLayout.setOnTouchListener(this);
+        gameLayout.addView(gameView); // и добавляем в него gameView
+        GameStarter.LArray.clear();
+        GameViewEvading.usesstarShapes.clear();
+        GameViewEvading.starShapes.clear();
+    }
 
     @Override
     public void finishActivity() {
         finish();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
-//    private  void  InizializateComponents()
-//    {
-//
-//    }
 
-
-//
-//
-//
-//    class  DrawGameView extends View
-//    {
-//
-//        public DrawGameView(Context context) {
-//            super(context);
-//        }
-//
-//        @Override
-//        protected void onDraw(Canvas canvas) {
-//            canvas.drawColor(Color.GREEN);
-//            //
-//            unitW = canvas.getWidth() / maxX;
-//            unitH = canvas.getHeight() / maxY;
-//            //
-//            Bitmap cBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background_0000_2);
-//            bitmap = Bitmap.createScaledBitmap(
-//                        cBitmap, canvas.getWidth(), canvas.getHeight(), false);
-//            canvas.drawBitmap(bitmap, 0, 0, null);
-//            paint = new Paint();
-//            GenerateStars(canvas);
-//            paint.setColor(Color.BLUE);
-//            paint.setStrokeWidth(10);
-//            canvas.drawLine(0, 0, 480, 650, paint);
-//            canvas.drawLine(480, 0, 0, 650, paint);
-//        }
-//        private void GenerateStars(Canvas canvas)
-//        {
-//            double starsquantaty = 7 + Math.random()*8;
-//            for(int i= 0;i< starsquantaty;i++)
-//            {
-//                StarShape starShape = new StarShape(GameStarter.this);
-//                starShape.drow(paint,canvas);
-//                starShapes.add(starShape);
-//            }
-//        }
-//    }
-//}

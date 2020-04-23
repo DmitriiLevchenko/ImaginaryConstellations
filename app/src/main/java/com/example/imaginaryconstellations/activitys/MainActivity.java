@@ -1,12 +1,13 @@
-package com.example.imaginaryconstellations;
+package com.example.imaginaryconstellations.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.imaginaryconstellations.R;
 
 public class MainActivity extends AppCompatActivity {
     public static final String LOG  = "MyLog";
@@ -47,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private void  CreateGameIntent()
     {
-        startActivity(new Intent(MainActivity.this,GameStarter.class));
+        startActivity(new Intent(MainActivity.this, GameStarter.class));
     }
     private void  CreateRuleIntent()
     {
-        startActivity(new Intent(MainActivity.this,Rules.class));
+        startActivity(new Intent(MainActivity.this, Rules.class));
     }
     private void finishActivity()
     {

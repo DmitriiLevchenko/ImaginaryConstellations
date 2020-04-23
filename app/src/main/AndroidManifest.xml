@@ -10,14 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GameStarter"
+        <activity android:name=".activitys.GameStarter"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity"></activity>
-        <activity android:name=".Rules"
+        <activity android:name=".activitys.Rules"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activitys.MainActivity"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>

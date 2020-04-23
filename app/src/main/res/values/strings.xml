@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ImaginaryConstellations</string>
+    <string name="text">Connect the dots to make a constellation. You must not allow one line to cross a friend.(use the taps to move)</string>
 </resources>

@@ -1,27 +1,27 @@
 package com.example.imaginaryconstellations.util;
 
 public class Pointer {
-    private float X;
-    private float Y;
+    public float x;
+    public float y;
 
     public Pointer(float x, float y) {
-        X = x;
-        Y = y;
+        this.x = x;
+        this.y = y;
     }
 
     public float getX() {
-        return X;
+        return x;
     }
 
     public void setX(float x) {
-        X = x;
+        this.x = x;
     }
 
     public float getY() {
-        return Y;
+        return y;
     }
 
     public void setY(float y) {
-        Y = y;
+        this.y = y;
     }
 }

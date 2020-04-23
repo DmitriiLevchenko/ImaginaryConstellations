@@ -3,9 +3,8 @@ package com.example.imaginaryconstellations.model;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.imaginaryconstellations.GameStarter;
 import com.example.imaginaryconstellations.GameViewEvading;
-import com.example.imaginaryconstellations.MainActivity;
+import com.example.imaginaryconstellations.activitys.MainActivity;
 import com.example.imaginaryconstellations.R;
 
 import java.util.Random;
@@ -20,7 +19,7 @@ public class StarShape extends Shape {
             y= (int) (radius*2 + Math.random()*(GameViewEvading.maxY-radius*5));
             x = (int) (radius*2 + Math.random()*(GameViewEvading.maxX-radius*5));
         }while (checkcolision(x,y));
-        bitmapId = R.drawable.spinnerverycompressed;
+        bitmapId = R.drawable.compressed2mintranspsmall;
         size = radius*2;
         init(context);
     }
@@ -44,4 +43,5 @@ public class StarShape extends Shape {
         Log.d(MainActivity.LOG,"false");
         return false;
     }
+
 }
