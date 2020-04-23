@@ -228,7 +228,7 @@ public class GameViewEvading extends SurfaceView implements Runnable, ActFinishe
         }
     }
 
-    
+
     @Override
     public void finishActivity() {
         interrupted = false;

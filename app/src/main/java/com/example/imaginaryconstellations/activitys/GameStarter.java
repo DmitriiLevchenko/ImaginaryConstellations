@@ -20,17 +20,18 @@ import java.util.ArrayList;
 
 public class GameStarter extends AppCompatActivity implements View.OnTouchListener, ActFinisher {
     public  float x = 0;
-    public static float rotate = 0;
     public  float y = 0;
     public Pointer startPointer = null;
     public Pointer finishPointer = null;
-    public static ArrayList<Line> LArray = new ArrayList<>();
-    public  boolean previousPointischeked = false;
     private StarShape StartstarShape = null,finishstarShape =null;
     private TextView massege;
     public static String Smassege = "";
+    public  boolean previousPointischeked = false;
     private Boolean atfirst = true;
     public static  Boolean  restart = false;
+    public static ArrayList<Line> LArray = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,6 @@ public class GameStarter extends AppCompatActivity implements View.OnTouchListen
                         {
 
                             finishPointer = new Pointer(x,y);
-                            //Log.d(MainActivity.LOG,"LArray Addddd");
                             LArray.add(new Line(startPointer, finishPointer));
                             for(int i = 0; i< GameViewEvading.usesstarShapes.size(); i++)
                             {
@@ -137,6 +137,8 @@ public class GameStarter extends AppCompatActivity implements View.OnTouchListen
         }
         return  false;
     }
+
+
     private void InizializateComponents()
     {
         massege = findViewById(R.id.textmassege);
@@ -161,6 +163,8 @@ public class GameStarter extends AppCompatActivity implements View.OnTouchListen
 
     @Override
     protected void onDestroy() {
+        //!!!
+        //Finish Theared GameviewEvading
         super.onDestroy();
     }
 }
