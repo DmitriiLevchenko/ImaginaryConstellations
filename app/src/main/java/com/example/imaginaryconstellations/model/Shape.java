@@ -7,22 +7,23 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 import com.example.imaginaryconstellations.GameStarter;
+import com.example.imaginaryconstellations.GameViewEvading;
 
 public class Shape {
-    protected int x; // координаты
-    protected int y;
-    protected float size; // размер
+    public int x; // координаты
+    public int y;
+    public float size; // размер
     protected int bitmapId; // id картинки
     protected Bitmap bitmap; // картинка
 
     public void init(Context context) { // сжимаем картинку до нужных размеров
         Bitmap cBitmap = BitmapFactory.decodeResource(context.getResources(), bitmapId);
         bitmap = Bitmap.createScaledBitmap(
-                cBitmap, (int)(size * GameStarter.unitW), (int)(size * GameStarter.unitH), false);
+                cBitmap, (int)(size * GameViewEvading.unitW), (int)(size * GameViewEvading.unitH), false);
         cBitmap.recycle();
     }
     public void drow(Paint paint, Canvas canvas){ // рисуем картинку
-        canvas.drawBitmap(bitmap, x* GameStarter.unitW, y* GameStarter.unitH, paint);
+        canvas.drawBitmap(bitmap, x* GameViewEvading.unitW, y* GameViewEvading.unitH, paint);
     }
 
 }

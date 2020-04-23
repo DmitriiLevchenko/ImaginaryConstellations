@@ -7,6 +7,13 @@
     tools:context=".GameStarter"
     android:id="@+id/parentGameLoyout"
     android:orientation="horizontal">
-
+    <LinearLayout
+        android:id="@+id/gameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="373dp"
+        android:layout_weight="100"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:visibility="visible" />
 
 </LinearLayout>
